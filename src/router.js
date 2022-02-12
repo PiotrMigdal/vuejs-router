@@ -2,6 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import store from "@/store";
+import ExperienceDetails from "./views/ExperienceDetails";
+import ExperienceDetailsEdit from "./views/ExperienceDetailsEdit";
 Vue.use(Router);
 
 const router = new Router({
@@ -44,8 +46,16 @@ const router = new Router({
           path: ":experienceSlug",
           name: "experienceDetails",
           props: true,
-          component: () =>
-            import(/*webpackChunkName: "ExperienceDetails"*/ "./views/ExperienceDetails")
+          component: ExperienceDetails
+        },
+        {
+          path: ":experienceSlug/edit",
+          name: "experienceDetailsEdit",
+          props: true,
+          meta: {
+            action: "Editing: "
+          },
+          component: ExperienceDetailsEdit
         }
       ],
       beforeEnter: (to, from, next) => {

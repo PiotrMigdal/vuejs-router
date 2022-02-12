@@ -3,6 +3,7 @@
     <GoBack />
     <section class="destinations">
       <h1>
+        {{ this.$route.meta.action ? this.$route.meta.action : "" }}
         {{ destination.name }}
       </h1>
       <div class="destination-details">
@@ -32,6 +33,17 @@
               :src="require(`@/assets/${experience.image}`)"
               :alt="experience.name"
             />
+            <span class="card__text">
+              {{ experience.name }}
+            </span>
+          </router-link>
+          <router-link
+            :to="{
+              name: 'experienceDetailsEdit',
+              params: { experienceSlug: experience.slug }
+            }"
+          >
+            Edit
             <span class="card__text">
               {{ experience.name }}
             </span>
