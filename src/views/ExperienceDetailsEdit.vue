@@ -4,12 +4,31 @@
     <div class="experience-details">
       <img :src="require(`@/assets/${experience.image}`)" />
       <input type="text" :value="experience.description" />
+      <input type="text" v-model="newDestinationName" />
     </div>
+    <router-link
+      :to="{
+        name: 'DestinationDetails',
+        params: {
+          newDestinationName: newDestinationName,
+          slug: slug
+        }
+      }"
+    >
+      <span class="card__text">
+        Save
+      </span>
+    </router-link>
   </section>
 </template>
 <script>
 import store from "@/store.js";
 export default {
+  data() {
+    return {
+      newDestinationName: "Poland"
+    };
+  },
   props: {
     slug: {
       type: String,

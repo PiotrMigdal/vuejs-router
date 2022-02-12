@@ -4,7 +4,7 @@
     <section class="destinations">
       <h1>
         {{ this.$route.meta.action ? this.$route.meta.action : "" }}
-        {{ destination.name }}
+        {{ newDestinationName ? newDestinationName : destination.name }}
       </h1>
       <div class="destination-details">
         <img
@@ -68,6 +68,9 @@ export default {
     slug: {
       type: String,
       required: true
+    },
+    newDestinationName: {
+      type: String
     }
   },
   computed: {
